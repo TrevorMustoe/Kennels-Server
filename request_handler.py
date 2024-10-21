@@ -1,5 +1,5 @@
 import json
-from views import get_all_animals, get_single_animal, get_all_customers, get_single_customer, create_animal, create_customer
+from views import get_all_animals, get_single_animal, get_all_customers, get_single_customer, create_animal, create_customer, delete_animal
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
@@ -130,6 +130,20 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Encode the new animal and send in response
         self.wfile.write(json.dumps(new_item).encode())
+        
+    def do_DELETE(self):
+        # Set a 204 response code
+        self._set_headers(204)
+
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Delete a single animal from the list
+        if resource == "animals":
+            delete_animal(id)
+
+        # Encode the new animal and send in response
+        self.wfile.write("".encode())
         
     
 
