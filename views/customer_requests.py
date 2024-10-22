@@ -2,7 +2,15 @@ CUSTOMERS = [
     {
         "id": 1,
         "name": "Ryan Tanay"
-    }
+    },
+    {
+        "id": 2,
+        "name": "Ryan Trahan"
+    },
+    {
+        "id": 3,
+        "name": "Ryan Cena"
+    },
 ]
 
 # Function with a single parameter

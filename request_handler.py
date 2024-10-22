@@ -127,6 +127,12 @@ class HandleRequests(BaseHTTPRequestHandler):
             
         if resource == "customers":
             new_item = create_customer(post_body)
+            
+        if resource == "employees":
+            new_item = create_employee(post_body)
+            
+        if resource == "locations":
+            new_item = create_location(post_body)
 
         # Encode the new animal and send in response
         self.wfile.write(json.dumps(new_item).encode())
@@ -143,13 +149,13 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_animal(id)
         
         if resource == "customers":
-            delete_animal(id)
+            delete_customer(id)
             
         if resource == "employees":
-            delete_animal(id)
+            delete_employee(id)
             
         if resource == "locations":
-            delete_animal(id)
+            delete_location(id)
 
         # Encode the new animal and send in response
         self.wfile.write("".encode())
@@ -165,6 +171,15 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Delete a single animal from the list
         if resource == "animals":
+            update_animal(id, post_body)
+            
+        if resource == "customers":
+            update_animal(id, post_body)
+            
+        if resource == "employees":
+            update_animal(id, post_body)
+            
+        if resource == "locations":
             update_animal(id, post_body)
 
         # Encode the new animal and send in response
