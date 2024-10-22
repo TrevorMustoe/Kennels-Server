@@ -1,5 +1,5 @@
 import json
-from views import get_all_animals, get_single_animal, get_all_customers, get_single_customer, create_animal, create_customer, delete_animal, update_animal, get_single_employee, get_all_employees, delete_employee, update_employee, update_customer, create_employee, delete_customer
+from views import get_all_animals, get_single_animal, get_all_customers, get_single_customer, create_animal, create_customer, delete_animal, update_animal, get_single_employee, get_all_employees, delete_employee, update_employee, get_all_locations, get_single_location, delete_location, delete_customer, update_customer, update_location, create_employee, create_location 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
@@ -79,6 +79,13 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             else:
                 response = get_all_animals()
+        
+        if resource == "locations":
+            if id is not None:
+                response = get_single_location(id)
+
+            else:
+                response = get_all_locations()
                 
         if resource == "employees":
             if id is not None:
