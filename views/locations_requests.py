@@ -68,7 +68,7 @@ def get_single_location(id):
             a.id,
             a.name,
             a.address
-        FROM employee a
+        FROM location a
         WHERE a.id = ?
         """, ( id, ))
 
