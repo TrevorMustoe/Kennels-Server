@@ -189,3 +189,13 @@ def get_Animal_by_status(status):
             animals.append(animal.__dict__)
 
     return animals
+
+def delete_animal(id):
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM animal
+        WHERE id = ?
+        """, (id, ))
+  

@@ -145,4 +145,14 @@ def get_employees_by_location(location_id):
             employee = Employees(row['id'], row['name'], row['location_id'], row['address'])
             employees.append(employee.__dict__)
 
-    return employees       
+    return employees
+
+def delete_employee(id):
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM employee
+        WHERE id = ?
+        """, (id, ))
+         
